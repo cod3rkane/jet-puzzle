@@ -1,7 +1,18 @@
 #include <iostream>
+#include <GL/glew.h>
+#include <SDL2/SDL.h>
+#include "Game.h"
+#include "core/Window.h"
 
 int main() {
-	std::cout << "Hello C++" << std::endl;
+    Core::Window window_settings = {
+        1280,
+        720,
+        "Jet Puzzle"
+    };
 
-	return 0;
+    Game jetPuzzle(&window_settings);
+    jetPuzzle.main_loop();
+
+    return EXIT_SUCCESS;
 }
