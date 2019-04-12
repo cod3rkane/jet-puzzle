@@ -49,7 +49,7 @@ void Game::main_loop() {
            }
        }
 
-       glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
+       glClearColor(0.94f, 0.97f, 0.93f, 1.0f);
        glClear(GL_COLOR_BUFFER_BIT);
 
        SDL_GL_SwapWindow(this->window);
