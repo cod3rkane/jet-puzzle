@@ -10,7 +10,6 @@ namespace Core {
     public:
         SDL_Rect* clip;
         SDL_Rect* render_quad;
-        double angle;
 
         Sprite(std::string path, SDL_Renderer* renderer, SDL_Rect* renderQuad);
         void render(SDL_Renderer* renderer) override;

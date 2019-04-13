@@ -55,6 +55,7 @@ void Game::main_loop() {
     Core::Sprite planes("src/assets/airplanes", this->renderer, &planeRect);
     SDL_Rect cropPlane = { 0, 0, 256, 256 };
     planes.clip = &cropPlane;
+    planes.rotation = 90;
 
     while (this->isRunning) {
        while (SDL_PollEvent(&sdlEvent) != 0) {

@@ -7,9 +7,9 @@
 namespace Core {
     class Object {
     public:
-        glm::vec3* position;
-        glm::vec3* rotation;
-        glm::vec3* scale;
+        glm::vec2 position;
+        double rotation;
+        glm::vec3 scale;
         virtual void render(SDL_Renderer* renderer) = 0;
     };
 };
