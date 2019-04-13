@@ -11,6 +11,7 @@ namespace Core {
         double rotation;
         glm::vec3 scale;
         virtual void render(SDL_Renderer* renderer) = 0;
+        virtual void updateState(double dt) = 0;
     };
 };
 

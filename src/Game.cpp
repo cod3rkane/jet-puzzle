@@ -58,6 +58,7 @@ void Game::main_loop() {
     
     SDL_Rect ballRect = { 0, 0, 100, 100 };
     Core::Sprite balls("src/assets/balls.png", this->renderer, &ballRect);
+    Core::Clock clock;
 
     while (this->isRunning) {
        while (SDL_PollEvent(&sdlEvent) != 0) {
@@ -66,11 +67,17 @@ void Game::main_loop() {
            }
        }
 
+       // process input
+       clock.tick();
+       this->keyboard_states = SDL_GetKeyboardState(NULL);
+
+       // update game
+
        SDL_RenderClear(this->renderer);
        glClearColor(0.94f, 0.97f, 0.93f, 1.0f);
        glClear(GL_COLOR_BUFFER_BIT);
 
-       // draw stuffs here
+       // render
        balls.render(this->renderer);
        plane.render(this->renderer);
 

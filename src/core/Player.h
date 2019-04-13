@@ -12,6 +12,7 @@ namespace Core {
         Player();
         ~Player();
         void render(SDL_Renderer* renderer);
+        void updateState(double dt);
     };
 };
 

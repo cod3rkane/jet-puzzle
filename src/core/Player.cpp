@@ -12,3 +12,5 @@ void Core::Player::render(SDL_Renderer* renderer) {
     this->sprite->render(renderer);
 }
 
+void Core::Player::updateState(double dt) {}
+

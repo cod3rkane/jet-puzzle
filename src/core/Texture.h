@@ -12,6 +12,7 @@ namespace Core {
         SDL_Texture* texture;
         Texture(std::string path, SDL_Renderer* renderer);
         void render(SDL_Renderer* renderer);
+        void updateState(double dt);
     };
 }
 

@@ -23,6 +23,7 @@ set(SOURCE_FILES
     src/core/Sprite.cpp
     src/core/Player.h
     src/core/Player.cpp
+    src/core/Clock.h
 )
 
 add_executable(PuzzleGame ${SOURCE_FILES})
