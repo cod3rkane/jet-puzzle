@@ -48,14 +48,16 @@ Game::Game(const Core::Window* window_settings) {
 
 void Game::main_loop() {
     SDL_Event sdlEvent;
-    Core::Texture texture("src/assets/wall.jpg", this->renderer);
+    SDL_Rect planeRect = { 100, 0, 256, 256 };
+    SDL_Rect cropPlane = { 0, 0, 256, 256 };
+
+    Core::Sprite planesSprite("src/assets/airplanes", this->renderer, &planeRect);
+    planesSprite.clip = &cropPlane;
+    Core::Player plane;
+    plane.sprite = &planesSprite;
+    
     SDL_Rect ballRect = { 0, 0, 100, 100 };
     Core::Sprite balls("src/assets/balls.png", this->renderer, &ballRect);
-    SDL_Rect planeRect = { 100, 0, 256, 256 };
-    Core::Sprite planes("src/assets/airplanes", this->renderer, &planeRect);
-    SDL_Rect cropPlane = { 0, 0, 256, 256 };
-    planes.clip = &cropPlane;
-    planes.rotation = 90;
 
     while (this->isRunning) {
        while (SDL_PollEvent(&sdlEvent) != 0) {
@@ -69,9 +71,8 @@ void Game::main_loop() {
        glClear(GL_COLOR_BUFFER_BIT);
 
        // draw stuffs here
-       texture.render(this->renderer);
        balls.render(this->renderer);
-       planes.render(this->renderer);
+       plane.render(this->renderer);
 
        SDL_GL_SwapWindow(this->window);
        SDL_RenderPresent(this->renderer);

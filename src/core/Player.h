@@ -2,13 +2,15 @@
 #define CORE_PLAYER_H
 
 #include <SDL2/SDL.h>
-#include "Texture.h"
-#include "Object"
+#include "Sprite.h"
+#include "Object.h"
 
 namespace Core {
-    class Player : Core::Object {
-        Core::Texture texture;
+    class Player : public Core::Object {
     public:
+        Core::Sprite* sprite;
+        Player();
+        ~Player();
         void render(SDL_Renderer* renderer);
     };
 };
