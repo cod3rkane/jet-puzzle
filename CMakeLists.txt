@@ -8,6 +8,9 @@ set(SOURCE_FILES
     src/Game.h
     src/Game.cpp
     src/core/Window.h
+    src/core/StbImage.h
+    src/core/Texture.h
+    src/core/Texture.cpp
 )
 
 add_executable(PuzzleGame ${SOURCE_FILES})

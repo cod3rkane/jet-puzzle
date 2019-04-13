@@ -28,6 +28,13 @@ Game::Game(const Core::Window* window_settings) {
         std::cout << "ERROR: COuld not create SDL context from window" << std::endl;
     }
 
+    this->renderer = SDL_CreateRenderer(this->window, -1, SDL_RENDERER_ACCELERATED);
+
+    if (this->renderer == NULL) {
+        SDL_Log("Error: Could not create SDL renderer from window");
+        exit(1);
+    }
+
     glewExperimental = GL_TRUE;
     glewInit();
 
@@ -41,6 +48,7 @@ Game::Game(const Core::Window* window_settings) {
 
 void Game::main_loop() {
     SDL_Event sdlEvent;
+    Core::Texture texture("src/assets/wall.jpg", this->renderer);
 
     while (this->isRunning) {
        while (SDL_PollEvent(&sdlEvent) != 0) {
@@ -49,14 +57,20 @@ void Game::main_loop() {
            }
        }
 
+       SDL_RenderClear(this->renderer);
        glClearColor(0.94f, 0.97f, 0.93f, 1.0f);
        glClear(GL_COLOR_BUFFER_BIT);
 
+       // draw stuffs here
+       SDL_RenderCopy(this->renderer, texture.texture, NULL, NULL);
+
        SDL_GL_SwapWindow(this->window);
+       SDL_RenderPresent(this->renderer);
     }
 }
 
 Game::~Game() {
+    SDL_DestroyRenderer(this->renderer);
     SDL_DestroyWindow(this->window);
     SDL_GL_DeleteContext(this->context);
     SDL_Quit();

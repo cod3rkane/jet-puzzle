@@ -5,10 +5,12 @@
 #include <GL/glew.h>
 #include <SDL2/SDL.h>
 #include "core/Window.h"
+#include "core/Texture.h"
 
 class Game {
     SDL_Window* window;
     SDL_GLContext context;
+    SDL_Renderer* renderer;
     bool isRunning;
 public:
     Game(const Core::Window* window_settings);
