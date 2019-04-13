@@ -7,9 +7,10 @@
 
 namespace Core {
     class Sprite : public Core::Texture {
+    public:
         SDL_Rect* clip;
         SDL_Rect* render_quad;
-    public:
+
         Sprite(std::string path, SDL_Renderer* renderer, SDL_Rect* renderQuad);
         void render(SDL_Renderer* renderer) override;
     };
