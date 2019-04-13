@@ -75,3 +75,4 @@ Game::~Game() {
     SDL_GL_DeleteContext(this->context);
     SDL_Quit();
 }
+

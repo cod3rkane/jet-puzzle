@@ -56,3 +56,4 @@ Core::Texture::Texture(std::string path, SDL_Renderer* renderer) {
 void Core::Texture::render(SDL_Renderer* renderer) {
     SDL_RenderCopy(renderer, this->texture, NULL, NULL);
 }
+
