@@ -5,6 +5,14 @@ Core::Sprite::Sprite(std::string path, SDL_Renderer* renderer, SDL_Rect* renderQ
 }
 
 void Core::Sprite::render(SDL_Renderer* renderer) {
-    SDL_RenderCopyEx(renderer, this->texture, this->clip, this->render_quad, this->rotation, NULL, SDL_FLIP_NONE);
+    SDL_RenderCopyEx(
+                     renderer,
+                     this->texture,
+                     this->clip,
+                     this->render_quad,
+                     this->rotation,
+                     NULL,
+                     SDL_FLIP_NONE
+    );
 }
 

@@ -55,7 +55,7 @@ void Game::main_loop() {
     planesSprite.clip = &cropPlane;
     Core::Player plane;
     plane.sprite = &planesSprite;
-    
+
     SDL_Rect ballRect = { 0, 0, 100, 100 };
     Core::Sprite balls("src/assets/balls.png", this->renderer, &ballRect);
     Core::Clock clock;
