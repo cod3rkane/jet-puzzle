@@ -6,6 +6,7 @@
 #include <SDL2/SDL.h>
 #include "core/Window.h"
 #include "core/Texture.h"
+#include "core/Sprite.h"
 
 class Game {
     SDL_Window* window;

@@ -47,6 +47,7 @@ Core::Texture::Texture(std::string path, SDL_Renderer* renderer) {
         exit(1);
     }
 
+    SDL_SetColorKey(surf, SDL_TRUE, SDL_MapRGB(surf->format, 0, 0xFF, 0xFF));
     this->texture = SDL_CreateTextureFromSurface(renderer, surf);
 
     SDL_FreeSurface(surf);
