@@ -11,6 +11,7 @@ set(SOURCE_FILES
     src/core/StbImage.h
     src/core/Texture.h
     src/core/Texture.cpp
+    src/core/Object.h
 )
 
 add_executable(PuzzleGame ${SOURCE_FILES})
@@ -30,11 +31,16 @@ include_directories(${GLEW_INCLUDE_DIRS})
 find_package(SDL2 REQUIRED)
 include_directories(${SDL2_INCLUDE_DIRS})
 
+find_package(glm REQUIRED)
+include_directories(${GLM_INCLUDE_DIRS})
+add_definitions(${GLM_DEFINITIONS})
+
 target_link_libraries(PuzzleGame
     ${SDL2_LIBRARIES}
     ${OPENGL_LIBRARIES}
     ${GLEW_LIBRARIES}
     ${OPENGL_gl_LIBRARY}
     ${GLUT_LIBRARY}
+    ${GLM_LIBRARY_DIRS}
 )
 
