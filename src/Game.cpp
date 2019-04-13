@@ -62,7 +62,7 @@ void Game::main_loop() {
        glClear(GL_COLOR_BUFFER_BIT);
 
        // draw stuffs here
-       SDL_RenderCopy(this->renderer, texture.texture, NULL, NULL);
+       texture.render(this->renderer);
 
        SDL_GL_SwapWindow(this->window);
        SDL_RenderPresent(this->renderer);

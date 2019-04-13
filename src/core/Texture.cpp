@@ -53,3 +53,6 @@ Core::Texture::Texture(std::string path, SDL_Renderer* renderer) {
     stbi_image_free(data);
 }
 
+void Core::Texture::render(SDL_Renderer* renderer) {
+    SDL_RenderCopy(renderer, this->texture, NULL, NULL);
+}
