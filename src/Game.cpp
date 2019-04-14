@@ -5,7 +5,7 @@ Game::Game(const Core::Window* window_settings) {
     std::cout << "ERROR: Could not initialize sdl" << std::endl;
   }
 
-  SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 3);
+  SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 4);
   SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 1);
   SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_CORE);
 
@@ -43,7 +43,12 @@ Game::Game(const Core::Window* window_settings) {
     std::cout << "ERROR: Could not enable vsync" << std::endl;
   }
 
+  glViewport(0, 0, window_settings->width, window_settings->height);
+  glEnable(GL_BLEND);
+  glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+
   this->isRunning = true;
+  this->window_settings = window_settings;
 }
 
 void Game::main_loop() {
@@ -55,7 +60,7 @@ void Game::main_loop() {
   planesSprite.clip = &cropPlane;
   Core::Player plane;
   plane.sprite = &planesSprite;
-  // planesSprite.setPosition(glm::ivec2(100, 0));
+  plane.window_settigs = this->window_settings;
 
   Core::Sprite balls("src/assets/balls.png", this->renderer, 100, 100);
 
@@ -73,8 +78,7 @@ void Game::main_loop() {
     this->keyboard_states = SDL_GetKeyboardState(NULL);
 
     // update game
-    planesSprite.setPosition(glm::ivec2(5 * (delta.get_ticks() / 1000.f), 0));
-    std::cout << 200 * (delta.get_ticks() / 1000.f) << std::endl;
+    plane.updateState(delta.get_ticks());
     delta.start();
 
     SDL_RenderClear(this->renderer);

@@ -2,13 +2,18 @@
 #define CORE_PLAYER_H
 
 #include <SDL2/SDL.h>
+#include <glm/glm.hpp>
 #include "Sprite.h"
 #include "Object.h"
+#include "Window.h"
 
 namespace Core {
   class Player : public Core::Object {
+    int velocity = 366;
   public:
     Core::Sprite* sprite;
+    const Core::Window* window_settigs;
+
     Player();
     ~Player();
     void render(SDL_Renderer* renderer);

@@ -11,15 +11,16 @@
 #include "core/Clock.h"
 
 class Game {
-    SDL_Window* window;
-    SDL_GLContext context;
-    SDL_Renderer* renderer;
-    bool isRunning;
-    const Uint8* keyboard_states;
+  SDL_Window* window;
+  SDL_GLContext context;
+  SDL_Renderer* renderer;
+  bool isRunning;
+  const Uint8* keyboard_states;
+  const Core::Window* window_settings;
 public:
-    Game(const Core::Window* window_settings);
-    ~Game();
-    void main_loop();
+  Game(const Core::Window* window_settings);
+  ~Game();
+  void main_loop();
 };
 
 #endif
