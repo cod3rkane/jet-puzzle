@@ -14,7 +14,7 @@ void Core::Player::render(SDL_Renderer* renderer) {
 
 void Core::Player::updateState(double dt) {
   double vel = this->velocity * (dt / 1000.f);
-  glm::ivec2 pos = glm::ivec2(this->position.x - vel, this->position.y - vel);
+  glm::ivec2 pos = glm::ivec2(this->position.x + vel, this->position.y + vel);
 
   if (pos.x + this->sprite->width >= this->window_settigs->width) {
     // do nothing
