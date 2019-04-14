@@ -59,7 +59,8 @@ void Game::main_loop() {
 
   Core::Sprite balls("src/assets/balls.png", this->renderer, 100, 100);
 
-  Core::Clock clock;
+  Core::Clock delta;
+  delta.start();
 
   while (this->isRunning) {
     while (SDL_PollEvent(&sdlEvent) != 0) {
@@ -69,10 +70,12 @@ void Game::main_loop() {
     }
 
     // process input
-    clock.tick();
     this->keyboard_states = SDL_GetKeyboardState(NULL);
 
     // update game
+    planesSprite.setPosition(glm::ivec2(5 * (delta.get_ticks() / 1000.f), 0));
+    std::cout << 200 * (delta.get_ticks() / 1000.f) << std::endl;
+    delta.start();
 
     SDL_RenderClear(this->renderer);
     glClearColor(0.94f, 0.97f, 0.93f, 1.0f);
