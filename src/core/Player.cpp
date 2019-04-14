@@ -14,11 +14,15 @@ void Core::Player::render(SDL_Renderer* renderer) {
 
 void Core::Player::updateState(double dt) {
   double vel = this->velocity * (dt / 1000.f);
-  glm::ivec2 pos = glm::ivec2(vel + this->position.x, vel + this->position.y);
+  glm::ivec2 pos = glm::ivec2(this->position.x - vel, this->position.y - vel);
 
   if (pos.x + this->sprite->width >= this->window_settigs->width) {
     // do nothing
   } else if (pos.y + this->sprite->height >= this->window_settigs->height) {
+    // do nothing
+  } else if (pos.x <= 0.0f) {
+    // do nothing
+  } else if (pos.y <= 0.0f) {
     // do nothing
   } else {
     this->setPosition(pos);

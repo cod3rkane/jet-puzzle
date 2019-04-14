@@ -61,6 +61,7 @@ void Game::main_loop() {
   Core::Player plane;
   plane.sprite = &planesSprite;
   plane.window_settigs = this->window_settings;
+  plane.setPosition(glm::ivec2(600, 300));
 
   Core::Sprite balls("src/assets/balls.png", this->renderer, 100, 100);
 
