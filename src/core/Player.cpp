@@ -12,7 +12,7 @@ void Core::Player::render(SDL_Renderer* renderer) {
     this->sprite->render(renderer);
 }
 
-void Core::Player::updateState(double dt) {
+void Core::Player::updateState(double dt, const Uint8* keyboard_state) {
   double vel = this->velocity * (dt / 1000.f);
   glm::ivec2 pos = glm::ivec2(this->position.x + vel, this->position.y + vel);
 

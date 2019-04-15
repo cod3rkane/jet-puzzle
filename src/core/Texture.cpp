@@ -58,7 +58,7 @@ void Core::Texture::render(SDL_Renderer* renderer) {
   SDL_RenderCopy(renderer, this->texture, NULL, NULL);
 }
 
-void Core::Texture::updateState(double dt) {}
+void Core::Texture::updateState(double dt, const Uint8* keyboard_state) {}
 
 void Core::Texture::setPosition(glm::ivec2 position) {
   this->position = position;

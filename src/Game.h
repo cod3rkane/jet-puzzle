@@ -15,7 +15,7 @@ class Game {
   SDL_GLContext context;
   SDL_Renderer* renderer;
   bool isRunning;
-  const Uint8* keyboard_states;
+  const Uint8* keyboard_state;
   const Core::Window* window_settings;
 public:
   Game(const Core::Window* window_settings);

@@ -76,10 +76,10 @@ void Game::main_loop() {
     }
 
     // process input
-    this->keyboard_states = SDL_GetKeyboardState(NULL);
+    this->keyboard_state = SDL_GetKeyboardState(NULL);
 
     // update game
-    plane.updateState(delta.get_ticks());
+    plane.updateState(delta.get_ticks(), this->keyboard_state);
     delta.start();
 
     SDL_RenderClear(this->renderer);
