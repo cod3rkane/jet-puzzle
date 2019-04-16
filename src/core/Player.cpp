@@ -32,9 +32,23 @@ void Core::Player::move(double dt, Core::Movement direction) {
     pos = this->position;
   }
 
-  this->setPosition(pos);
-  this->last_keyboard_state = direction;
-  this->isMoving = true;
+  if (pos.x + this->sprite->width >= this->window_settigs->width) {
+    // do nothing
+    this->isMoving = false;
+  } else if (pos.y + this->sprite->height >= this->window_settigs->height) {
+    // do nothing
+    this->isMoving = false;
+  } else if (pos.x <= 0.0f) {
+    // do nothing
+    this->isMoving = false;
+  } else if (pos.y <= 0.0f) {
+    // do nothing
+    this->isMoving = false;
+  } else {
+    this->setPosition(pos);
+    this->last_keyboard_state = direction;
+    this->isMoving = true;
+  }
 }
 
 void Core::Player::updateState(double dt, const Uint8* keyboard_state) {
@@ -51,18 +65,6 @@ void Core::Player::updateState(double dt, const Uint8* keyboard_state) {
       this->move(dt, Core::LEFT);
     }
   }
-
-  // if (pos.x + this->sprite->width >= this->window_settigs->width) {
-  //   // do nothing
-  // } else if (pos.y + this->sprite->height >= this->window_settigs->height) {
-  //   // do nothing
-  // } else if (pos.x <= 0.0f) {
-  //   // do nothing
-  // } else if (pos.y <= 0.0f) {
-  //   // do nothing
-  // } else {
-  //   this->setPosition(pos);
-  // }
 }
 
 void Core::Player::setPosition(glm::ivec2 position) {
