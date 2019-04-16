@@ -8,10 +8,17 @@
 #include "Window.h"
 
 namespace Core {
+  enum Movement {
+                 UP = 0,
+                 RIGHT = 1,
+                 DOWN = 2,
+                 LEFT = 3
+  };
+
   class Player : public Core::Object {
     int velocity = 366;
     bool isMoving = false;
-    const Uint8* last_keyboard_state;
+    Core::Movement last_keyboard_state;
   public:
     Core::Sprite* sprite;
     const Core::Window* window_settigs;
@@ -23,7 +30,7 @@ namespace Core {
     void setPosition(glm::ivec2 position);
     void setRotation(double rotation);
     void setScale(glm::vec3 scale);
-    void move(double dt, const Uint8* key);
+    void move(double dt, Core::Movement direction);
   };
 };
 

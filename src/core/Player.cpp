@@ -11,32 +11,45 @@ void Core::Player::render(SDL_Renderer* renderer) {
     this->sprite->render(renderer);
 }
 
-void Core::Player::move(double dt, const Uint8 *key) {
+void Core::Player::move(double dt, Core::Movement direction) {
   double vel = this->velocity * (dt / 1000.f);
   glm::ivec2 pos;
 
-  if (key[SDL_SCANCODE_A]) {
-    pos = glm::ivec2(this->position.x - vel, this->position.y);
-  } else if (key[SDL_SCANCODE_D]) {
-    pos = glm::ivec2(this->position.x + vel, this->position.y);
-  } else if (key[SDL_SCANCODE_S]) {
-    pos = glm::ivec2(this->position.x, this->position.y + vel);
-  } else if (key[SDL_SCANCODE_W]) {
+  switch (direction) {
+  case Core::UP:
     pos = glm::ivec2(this->position.x, this->position.y - vel);
-  } else {
+    break;
+  case Core::RIGHT:
+    pos = glm::ivec2(this->position.x + vel, this->position.y);
+    break;
+  case Core::DOWN:
+    pos  = glm::ivec2(this->position.x, this->position.y + vel);
+    break;
+  case Core::LEFT:
+    pos = glm::ivec2(this->position.x - vel, this->position.y);
+    break;
+  default:
     pos = this->position;
   }
 
   this->setPosition(pos);
-  this->last_keyboard_state = key;
+  this->last_keyboard_state = direction;
+  this->isMoving = true;
 }
 
 void Core::Player::updateState(double dt, const Uint8* keyboard_state) {
   if (this->isMoving) {
     this->move(dt, this->last_keyboard_state);
   } else {
-    this->isMoving = true;
-    this->move(dt, keyboard_state);
+    if (keyboard_state[SDL_SCANCODE_W]) {
+      this->move(dt, Core::UP);
+    } else if (keyboard_state[SDL_SCANCODE_D]) {
+      this->move(dt, Core::RIGHT);
+    } else if (keyboard_state[SDL_SCANCODE_S]) {
+      this->move(dt, Core::DOWN);
+    } else if (keyboard_state[SDL_SCANCODE_A]) {
+      this->move(dt, Core::LEFT);
+    }
   }
 
   // if (pos.x + this->sprite->width >= this->window_settigs->width) {
