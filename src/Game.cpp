@@ -72,6 +72,9 @@ void Game::main_loop() {
   SDL_Rect crophex = { 0, 545, 82, 65 };
   hexmap.clip = &crophex;
 
+  std::vector<Core::Tile> tiles = {Core::Tile(0, 545, 1, hexmap), Core::Tile(99, 545, 2, hexmap)};
+  Core::TileMap map("src/assets/hex-map.png", tiles);
+
   while (this->isRunning) {
     while (SDL_PollEvent(&sdlEvent) != 0) {
       if (sdlEvent.type == SDL_QUIT) {
@@ -91,8 +94,9 @@ void Game::main_loop() {
     glClear(GL_COLOR_BUFFER_BIT);
 
     // render
+    map.render(this->renderer);
+    // hexmap.render(this->renderer);
     plane.render(this->renderer);
-    hexmap.render(this->renderer);
 
     SDL_GL_SwapWindow(this->window);
     SDL_RenderPresent(this->renderer);

@@ -13,7 +13,9 @@ Core::TileMap::~TileMap() {
 }
 
 void Core::TileMap::render(SDL_Renderer *renderer) {
-
+  for (Core::Tile tile : this->tiles) {
+    tile.render(renderer);
+  }
 }
 
 void Core::TileMap::updateState(double dt, const Uint8 *keyboard_state) {

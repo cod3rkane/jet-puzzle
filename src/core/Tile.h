@@ -4,13 +4,15 @@
 #include <iostream>
 #include <SDL2/SDL.h>
 #include "Object.h"
+#include "Sprite.h"
 
 namespace Core {
   class Tile : public Core::Object {
     SDL_Rect box;
     int type;
+    Core::Sprite* sprite;
   public:
-    Tile(int x, int y, int width, int height, int type);
+    Tile(int x, int y, int type, Core::Sprite sprite);
     ~Tile();
     SDL_Rect getBox();
     int getType();
