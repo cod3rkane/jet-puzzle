@@ -24,6 +24,8 @@ set(SOURCE_FILES
     src/core/Player.h
     src/core/Player.cpp
     src/core/Clock.h
+    src/core/TileMap.h
+    src/core/TileMap.cpp
 )
 
 add_executable(PuzzleGame ${SOURCE_FILES})

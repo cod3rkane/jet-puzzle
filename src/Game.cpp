@@ -64,6 +64,7 @@ void Game::main_loop() {
   plane.setPosition(glm::ivec2(600, 300));
 
   Core::Sprite balls("src/assets/balls.png", this->renderer, 100, 100);
+  balls.clip = &cropBalls;
 
   Core::Clock delta;
   delta.start();
