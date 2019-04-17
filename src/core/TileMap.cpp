@@ -3,8 +3,9 @@
 Core::TileMap::TileMap() {
 }
 
-Core::TileMap::TileMap(std::string sprite_path, Core::Tile* tiles[]) {
+Core::TileMap::TileMap(std::string sprite_path, std::vector<Core::Tile> tiles) {
   this->sprite_path = sprite_path;
+  this->tiles = tiles;
 }
 
 Core::TileMap::~TileMap() {
