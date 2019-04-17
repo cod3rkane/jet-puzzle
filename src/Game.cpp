@@ -63,11 +63,14 @@ void Game::main_loop() {
   plane.window_settigs = this->window_settings;
   plane.setPosition(glm::ivec2(600, 300));
 
-  Core::Sprite balls("src/assets/balls.png", this->renderer, 100, 100);
-  balls.clip = &cropBalls;
-
   Core::Clock delta;
   delta.start();
+
+
+  // TileMap
+  Core::Sprite hexmap("src/assets/hex-map.png", this->renderer, 82, 65);
+  SDL_Rect crophex = { 0, 545, 82, 65 };
+  hexmap.clip = &crophex;
 
   while (this->isRunning) {
     while (SDL_PollEvent(&sdlEvent) != 0) {
@@ -88,8 +91,8 @@ void Game::main_loop() {
     glClear(GL_COLOR_BUFFER_BIT);
 
     // render
-    balls.render(this->renderer);
     plane.render(this->renderer);
+    hexmap.render(this->renderer);
 
     SDL_GL_SwapWindow(this->window);
     SDL_RenderPresent(this->renderer);

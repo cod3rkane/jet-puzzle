@@ -9,6 +9,7 @@
 #include "core/Sprite.h"
 #include "core/Player.h"
 #include "core/Clock.h"
+#include "core/TileMap.h"
 
 class Game {
   SDL_Window* window;
