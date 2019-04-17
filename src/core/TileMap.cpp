@@ -3,7 +3,7 @@
 Core::TileMap::TileMap() {
 }
 
-Core::TileMap::TileMap(std::string sprite_path) {
+Core::TileMap::TileMap(std::string sprite_path, Core::Tile* tiles[]) {
   this->sprite_path = sprite_path;
 }
 
