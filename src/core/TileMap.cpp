@@ -14,6 +14,7 @@ Core::TileMap::~TileMap() {
 
 void Core::TileMap::render(SDL_Renderer *renderer) {
   for (Core::Tile tile : this->tiles) {
+    tile.setPosition(glm::ivec2(tile.getType() * tile.getBox().x, tile.getBox().y));
     tile.render(renderer);
   }
 }
