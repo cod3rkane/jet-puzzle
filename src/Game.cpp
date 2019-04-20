@@ -68,12 +68,13 @@ void Game::main_loop() {
 
 
   // TileMap
-  Core::Sprite hexmap("src/assets/hex-map.png", this->renderer, 82, 65);
-  SDL_Rect crophex = { 0, 545, 82, 65 };
+  Core::Sprite hexmap("src/assets/hex-map.png", this->renderer, 77, 64);
+  SDL_Rect crophex = { 0, 0, 77, 64 };
   hexmap.clip = &crophex;
 
-  std::vector<Core::Tile> tiles = {Core::Tile(0, 545, 1, hexmap), Core::Tile(99, 545, 2, hexmap)};
+  std::vector<Core::Tile> tiles = {Core::Tile(0, 0, 0, hexmap), Core::Tile(77, 0, 1, hexmap)};
   Core::TileMap map("src/assets/hex-map.png", tiles);
+  map.setGrid(2, 2);
 
   while (this->isRunning) {
     while (SDL_PollEvent(&sdlEvent) != 0) {

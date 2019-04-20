@@ -41,3 +41,11 @@ void Core::Tile::setRotation(double rotation) {
 void Core::Tile::setScale(glm::vec3 scale) {
 
 }
+
+int Core::Tile::getWidth() {
+  return this->box.w;
+}
+
+int Core::Tile::getHeight() {
+  return this->box.h;
+}

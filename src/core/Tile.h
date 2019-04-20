@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <SDL2/SDL.h>
+#include <glm/glm.hpp>
 #include "Object.h"
 #include "Sprite.h"
 
@@ -21,6 +22,8 @@ namespace Core {
     void setPosition(glm::ivec2 position);
     void setRotation(double rotation);
     void setScale(glm::vec3 scale);
+    int getWidth();
+    int getHeight();
   };
 };
 

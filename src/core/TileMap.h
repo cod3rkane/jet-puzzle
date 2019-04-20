@@ -9,6 +9,8 @@
 
 namespace Core {
   class TileMap : public Core::Object {
+    int grid_x;
+    int grid_y;
   public:
     std::string sprite_path;
     std::vector<Core::Tile> tiles;
@@ -21,6 +23,7 @@ namespace Core {
     void setPosition(glm::ivec2 position);
     void setRotation(double rotation);
     void setScale(glm::vec3 scale);
+    void setGrid(int x, int y);
   };
 };
 
