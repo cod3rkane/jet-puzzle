@@ -53,19 +53,8 @@ Game::Game(const Core::Window* window_settings) {
 
 void Game::main_loop() {
   SDL_Event sdlEvent;
-  SDL_Rect cropPlane = { 0, 0, 256, 256 };
-  SDL_Rect cropBalls = { 0, 0, 100, 100 };
-
-  Core::Sprite planesSprite("src/assets/airplanes", this->renderer, 256, 256);
-  planesSprite.clip = &cropPlane;
-  Core::Player plane;
-  plane.sprite = &planesSprite;
-  plane.window_settigs = this->window_settings;
-  plane.setPosition(glm::ivec2(600, 300));
-
   Core::Clock delta;
   delta.start();
-
 
   // TileMap
   Core::Sprite hexmap("src/assets/hex-map.png", this->renderer, 77, 64);
@@ -81,6 +70,14 @@ void Game::main_loop() {
   };
   Core::TileMap map("src/assets/hex-map.png", tiles);
   map.setGrid(4, 2);
+
+  SDL_Rect cropPlane = { 0, 214, 78, 41 };
+  Core::Player plane;
+  hexmap.clip = &cropPlane;
+
+  plane.sprite = &hexmap;
+  plane.window_settigs = this->window_settings;
+  plane.setPosition(glm::ivec2(100, 0));
 
   while (this->isRunning) {
     while (SDL_PollEvent(&sdlEvent) != 0) {
@@ -102,7 +99,6 @@ void Game::main_loop() {
 
     // render
     map.render(this->renderer);
-    // hexmap.render(this->renderer);
     plane.render(this->renderer);
 
     SDL_GL_SwapWindow(this->window);
