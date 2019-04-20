@@ -16,7 +16,7 @@ namespace Core {
   };
 
   class Player : public Core::Object {
-    int velocity = 866;
+    int velocity = 640;
     bool isMoving = false;
     Core::Movement last_keyboard_state;
   public:
