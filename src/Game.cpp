@@ -69,9 +69,6 @@ void Game::main_loop() {
 
   // TileMap
   Core::Sprite hexmap("src/assets/hex-map.png", this->renderer, 77, 64);
-  SDL_Rect crophex = { 0, 0, 77, 64 };
-  hexmap.clip = &crophex;
-
   std::vector<Core::Tile> tiles = {
                                    Core::Tile(0, 0, 0, hexmap),
                                    Core::Tile(77, 0, 1, hexmap),
