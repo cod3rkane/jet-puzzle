@@ -13,9 +13,13 @@ Core::TileMap::~TileMap() {
 }
 
 void Core::TileMap::render(SDL_Renderer *renderer) {
-  for (Core::Tile &tile : this->tiles) {
-    tile.setPosition(glm::ivec2(tile.getType() * tile.getWidth(), 0));
-    tile.render(renderer);
+  for (int y = 0; y < this->grid_y; y++) {
+    for (int x = 0; x < this->grid_x; x++) {
+      int index = x + (y * this->grid_x);
+      glm::ivec2 pos(x * this->tiles[index].getWidth(), y * this->tiles[index].getHeight());
+      this->tiles[index].setPosition(pos);
+      this->tiles[index].render(renderer);
+    }
   }
 }
 
