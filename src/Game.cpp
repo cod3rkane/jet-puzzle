@@ -71,7 +71,7 @@ void Game::main_loop() {
   Core::TileMap map("src/assets/hex-map.png", tiles);
   map.setGrid(4, 2);
 
-  SDL_Rect cropPlane = { 0, 214, 78, 41 };
+  SDL_Rect cropPlane = { 19, 278, 40, 50 };
   Core::Player plane;
   hexmap.clip = &cropPlane;
 

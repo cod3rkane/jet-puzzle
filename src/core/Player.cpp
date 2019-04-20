@@ -12,7 +12,7 @@ void Core::Player::render(SDL_Renderer* renderer) {
 }
 
 void Core::Player::move(double dt, Core::Movement direction) {
-  double vel = this->velocity * (dt / 1000.f);
+  double vel = this->velocity * (dt / 1000);
   double rotation;
   glm::ivec2 pos;
 
