@@ -60,16 +60,41 @@ void Game::main_loop() {
   Core::Sprite hexmap("src/assets/hex-map.png", this->renderer, 77, 64);
   std::vector<Core::Tile> tiles = {
                                    Core::Tile(0, 0, 0, hexmap),
-                                   Core::Tile(77, 0, 1, hexmap),
-                                   Core::Tile(154, 0, 2, hexmap),
-                                   Core::Tile(231, 0, 3, hexmap),
-                                   Core::Tile(308, 0, 4, hexmap),
-                                   Core::Tile(385, 0, 5, hexmap),
-                                   Core::Tile(462, 0, 6, hexmap),
-                                   Core::Tile(538, 0, 7, hexmap)
+                                   Core::Tile(0, 0, 0, hexmap),
+                                   Core::Tile(0, 0, 0, hexmap),
+                                   Core::Tile(0, 0, 0, hexmap),
+                                   Core::Tile(0, 0, 0, hexmap), // Row
+                                   Core::Tile(0, 0, 0, hexmap),
+                                   Core::Tile(0, 0, 0, hexmap),
+                                   Core::Tile(0, 0, 0, hexmap),
+                                   Core::Tile(0, 0, 0, hexmap),
+                                   Core::Tile(0, 0, 0, hexmap), // Row
+                                   Core::Tile(0, 0, 0, hexmap),
+                                   Core::Tile(0, 0, 0, hexmap),
+                                   Core::Tile(0, 0, 0, hexmap),
+                                   Core::Tile(0, 0, 0, hexmap),
+                                   Core::Tile(0, 0, 0, hexmap), // Row
+                                   Core::Tile(0, 0, 0, hexmap),
+                                   Core::Tile(0, 0, 0, hexmap),
+                                   Core::Tile(0, 0, 0, hexmap),
+                                   Core::Tile(0, 0, 0, hexmap),
+                                   Core::Tile(0, 0, 0, hexmap), // Row
+                                   Core::Tile(0, 0, 0, hexmap),
+                                   Core::Tile(0, 0, 0, hexmap),
+                                   Core::Tile(0, 0, 0, hexmap),
+                                   Core::Tile(0, 0, 0, hexmap),
+                                   Core::Tile(0, 0, 0, hexmap), // Row
+                                   Core::Tile(0, 0, 0, hexmap),
+                                   Core::Tile(0, 0, 0, hexmap),
+                                   Core::Tile(0, 0, 0, hexmap),
+                                   Core::Tile(0, 0, 0, hexmap),
+                                   Core::Tile(0, 0, 0, hexmap), // Row
   };
   Core::TileMap map("src/assets/hex-map.png", tiles);
-  map.setGrid(4, 2);
+  map.setGrid(5, 6);
+  // 385 = grid_x * tile width
+  // 384 = grid_y * tile height
+  map.setPosition(glm::ivec2((window_settings->width - 385) * .5f, (window_settings->height - 384) * .5f));
 
   SDL_Rect cropPlane = { 19, 278, 40, 50 };
   Core::Player plane;
@@ -77,7 +102,7 @@ void Game::main_loop() {
 
   plane.sprite = &hexmap;
   plane.window_settigs = this->window_settings;
-  plane.setPosition(glm::ivec2(100, 0));
+  plane.setPosition(glm::ivec2(500, 300));
 
   while (this->isRunning) {
     frameStart = SDL_GetTicks();
