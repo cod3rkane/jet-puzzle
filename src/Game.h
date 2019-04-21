@@ -19,6 +19,10 @@ class Game {
   bool isRunning;
   const Uint8* keyboard_state;
   const Core::Window* window_settings;
+  const int FPS = 60;
+  const int frameDelay = 1000 / FPS;
+  Uint32 frameStart;
+  int frameTime;
 public:
   Game(const Core::Window* window_settings);
   ~Game();

@@ -80,6 +80,8 @@ void Game::main_loop() {
   plane.setPosition(glm::ivec2(100, 0));
 
   while (this->isRunning) {
+    frameStart = SDL_GetTicks();
+
     while (SDL_PollEvent(&sdlEvent) != 0) {
       if (sdlEvent.type == SDL_QUIT) {
         this->isRunning = false;
@@ -103,6 +105,12 @@ void Game::main_loop() {
 
     SDL_GL_SwapWindow(this->window);
     SDL_RenderPresent(this->renderer);
+
+    frameTime = SDL_GetTicks() - frameStart;
+
+    if (frameDelay > frameTime) {
+      SDL_Delay(frameDelay - frameTime);
+    }
   }
 }
 
