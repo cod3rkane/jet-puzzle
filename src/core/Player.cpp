@@ -51,6 +51,7 @@ void Core::Player::move(double dt, Core::Movement direction) {
     // do nothing
     this->isMoving = false;
   } else {
+    std::cout << "X " << pos.x << " Y " << pos.y << std::endl;
     this->setRotation(rotation);
     this->setPosition(pos);
     this->last_keyboard_state = direction;
@@ -59,9 +60,9 @@ void Core::Player::move(double dt, Core::Movement direction) {
 }
 
 void Core::Player::updateState(double dt, const Uint8* keyboard_state) {
-  // if (this->isMoving) {
-  //   this->move(dt, this->last_keyboard_state);
-  // } else {
+  if (this->isMoving) {
+    this->move(dt, this->last_keyboard_state);
+  } else {
     if (keyboard_state[SDL_SCANCODE_W]) {
       this->move(dt, Core::UP);
     } else if (keyboard_state[SDL_SCANCODE_D]) {
@@ -71,7 +72,7 @@ void Core::Player::updateState(double dt, const Uint8* keyboard_state) {
     } else if (keyboard_state[SDL_SCANCODE_A]) {
       this->move(dt, Core::LEFT);
     }
-  // }
+  }
 }
 
 void Core::Player::setPosition(glm::ivec2 position) {
@@ -95,10 +96,23 @@ void Core::Player::checkCollisions(std::vector<Core::Tile> &tiles) {
       double max_x = this->position.x + this->sprite->width;
       double max_y = this->position.y + this->sprite->height;
       if (max_x < e.position.x || this->position.x > e.position.x + e.getBox().w) collides = false;
-      if (max_y < e.position.y || this->position.y > e.position.y + e.getBox().w) collides = false;
+      if (max_y < e.position.y || this->position.y > e.position.y + e.getBox().h) collides = false;
+      if (max_x > e.position.x || max_x < e.position.x + e.getBox().w) {
+        if (this->velocity < 0) {
+          collides = false;
+        }
+      }
+      if (max_y > e.position.y || max_y < e.position.y + e.getBox().h) {
+        if (this->velocity < 0) {
+          collides = false;
+        }
+      }
 
       if (collides) {
-        std::cout << "collided" << std::endl;
+        this->velocity = -366;
+        this->isMoving = false;
+      } else {
+        this->velocity = 366;
       }
     }
   }

@@ -102,7 +102,7 @@ void Game::main_loop() {
 
   plane.sprite = &hexmap;
   plane.window_settigs = this->window_settings;
-  plane.setPosition(glm::ivec2(500, 300));
+  plane.setPosition(glm::ivec2(604, 474));
 
   while (this->isRunning) {
     frameStart = SDL_GetTicks();
