@@ -61,7 +61,7 @@ void Game::main_loop() {
   std::vector<Core::Tile> tiles = {
                                    Core::Tile(0, 0, 0, hexmap),
                                    Core::Tile(0, 0, 0, hexmap),
-                                   Core::Tile(0, 0, 0, hexmap),
+                                   Core::Tile(79, 143, 1, hexmap),
                                    Core::Tile(0, 0, 0, hexmap),
                                    Core::Tile(0, 0, 0, hexmap), // Row
                                    Core::Tile(0, 0, 0, hexmap),
@@ -117,6 +117,7 @@ void Game::main_loop() {
     this->keyboard_state = SDL_GetKeyboardState(NULL);
 
     // update game
+    plane.checkCollisions(map.tiles);
     plane.updateState(delta.get_ticks(), this->keyboard_state);
     delta.start();
 

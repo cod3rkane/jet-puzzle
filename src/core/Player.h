@@ -1,11 +1,14 @@
 #ifndef CORE_PLAYER_H
 #define CORE_PLAYER_H
 
+#include <iostream>
+#include <vector>
 #include <SDL2/SDL.h>
 #include <glm/glm.hpp>
 #include "Sprite.h"
 #include "Object.h"
 #include "Window.h"
+#include "Tile.h"
 
 namespace Core {
   enum Movement {
@@ -31,6 +34,7 @@ namespace Core {
     void setRotation(double rotation);
     void setScale(glm::vec3 scale);
     void move(double dt, Core::Movement direction);
+    void checkCollisions(std::vector<Core::Tile> &tiles);
   };
 };
 
