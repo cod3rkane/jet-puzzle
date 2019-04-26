@@ -123,20 +123,20 @@ void Game::main_loop() {
 
     SDL_RenderClear(this->renderer);
     glClearColor(0.94f, 0.97f, 0.93f, 1.0f);
-    glClear(GL_COLOR_BUFFER_BIT);
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
     // render
     map.render(this->renderer);
     plane.render(this->renderer);
-
-    SDL_GL_SwapWindow(this->window);
-    SDL_RenderPresent(this->renderer);
 
     frameTime = SDL_GetTicks() - frameStart;
 
     if (frameDelay > frameTime) {
       SDL_Delay(frameDelay - frameTime);
     }
+
+    SDL_GL_SwapWindow(this->window);
+    // SDL_RenderPresent(this->renderer);
   }
 }
 
