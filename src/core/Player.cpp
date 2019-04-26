@@ -109,10 +109,24 @@ void Core::Player::checkCollisions(std::vector<Core::Tile> &tiles) {
       }
 
       if (collides) {
-        this->velocity = -366;
         this->isMoving = false;
-      } else {
-        this->velocity = 366;
+        double vel = 10;
+        glm::ivec2 pos;
+        switch (this->last_keyboard_state) {
+        case Core::UP:
+          pos = glm::ivec2(this->position.x, this->position.y + vel);
+          break;
+        case Core::RIGHT:
+          pos = glm::ivec2(this->position.x - vel, this->position.y);
+          break;
+        case Core::DOWN:
+          pos = glm::ivec2(this->position.x, this->position.y - vel);
+          break;
+        case Core::LEFT:
+          pos = glm::ivec2(this->position.x + vel, this->position.y);
+          break;
+        }
+        this->setPosition(pos);
       }
     }
   }
