@@ -3,11 +3,20 @@
 
 #include <iostream>
 #include <vector>
+#include <GL/glew.h>
+#include <fstream>
+#include <string>
+#include <sstream>
 #include "Object.h"
 #include "Sprite.h"
 #include "Tile.h"
 
 namespace Core {
+  struct vec2 {
+    int x;
+    int y;
+  };
+
   class TileMap : public Core::Object {
     int grid_x;
     int grid_y;
@@ -24,6 +33,8 @@ namespace Core {
     void setRotation(double rotation);
     void setScale(glm::vec3 scale);
     void setGrid(int x, int y);
+    static Core::vec2 getPosFromTileset(int index);
+    static Core::TileMap fromFile(const GLchar* file, Core::Sprite sprite);
   };
 };
 

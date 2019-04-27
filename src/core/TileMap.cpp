@@ -48,3 +48,50 @@ void Core::TileMap::setGrid(int x, int y) {
   this->grid_y = y;
 }
 
+Core::TileMap Core::TileMap::fromFile(const GLchar* file, Core::Sprite sprite) {
+  std::vector<Core::Tile> tiles;
+  std::string line;
+  std::ifstream fstream(file);
+  std::string tileCode;
+
+  if (fstream) {
+    while (std::getline(fstream, line)) {
+      std::istringstream sstream(line);
+      while (sstream >> tileCode) {
+        int isCollidable = 0;
+        if (tileCode.find_first_of("#") != std::string::npos) {
+          tileCode.erase(tileCode.begin());
+          isCollidable = 1;
+        }
+        Core::vec2 pos = Core::TileMap::getPosFromTileset(std::stoi(tileCode));
+        Core::Tile tile(pos.x, pos.y, isCollidable, sprite);
+        tiles.push_back(tile);
+      }
+    }
+  }
+
+  return Core::TileMap("src/assets/hex-map.png", tiles);
+}
+
+Core::vec2 Core::TileMap::getPosFromTileset(int index) {
+  int tile_w = 77;
+  int tile_h = 64;
+  int max_tileset_rows = 5;
+  int max_tileset_cols = 6;
+  int i = 0;
+  Core::vec2 vec2;
+
+  for (int x = 0; x < max_tileset_rows; x++) {
+    for (int y = 0; y < max_tileset_cols; y++) {
+      if (i == index) {
+        int a = x * tile_w;
+        int b = y * tile_h;
+        vec2 = { a, b };
+      }
+      i++;
+    }
+  }
+
+  return vec2;
+}
+

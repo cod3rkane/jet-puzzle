@@ -51,7 +51,6 @@ void Core::Player::move(double dt, Core::Movement direction) {
     // do nothing
     this->isMoving = false;
   } else {
-    std::cout << "X " << pos.x << " Y " << pos.y << std::endl;
     this->setRotation(rotation);
     this->setPosition(pos);
     this->last_keyboard_state = direction;

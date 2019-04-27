@@ -136,7 +136,6 @@ void Game::main_loop() {
     }
 
     SDL_GL_SwapWindow(this->window);
-    // SDL_RenderPresent(this->renderer);
   }
 }
 
