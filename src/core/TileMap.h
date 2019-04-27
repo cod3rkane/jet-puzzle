@@ -33,8 +33,8 @@ namespace Core {
     void setRotation(double rotation);
     void setScale(glm::vec3 scale);
     void setGrid(int x, int y);
-    static Core::vec2 getPosFromTileset(int index);
-    static Core::TileMap fromFile(const GLchar* file, Core::Sprite sprite);
+    Core::vec2 getPosFromTileset(int index);
+    void fromFile(const GLchar* file, Core::Sprite sprite);
   };
 };
 

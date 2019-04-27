@@ -12,7 +12,7 @@ void Core::Sprite::render(SDL_Renderer* renderer) {
   SDL_RenderCopyEx(
                    renderer,
                    this->texture,
-                   this->clip,
+                   &this->clip,
                    &render_quad,
                    this->rotation,
                    NULL,

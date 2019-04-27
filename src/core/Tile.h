@@ -11,7 +11,7 @@ namespace Core {
   class Tile : public Core::Object {
     SDL_Rect box;
     int type;
-    Core::Sprite* sprite;
+    Core::Sprite sprite;
   public:
     Tile(int x, int y, int type, Core::Sprite sprite);
     ~Tile();

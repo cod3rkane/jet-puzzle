@@ -48,8 +48,8 @@ void Core::TileMap::setGrid(int x, int y) {
   this->grid_y = y;
 }
 
-Core::TileMap Core::TileMap::fromFile(const GLchar* file, Core::Sprite sprite) {
-  std::vector<Core::Tile> tiles;
+void Core::TileMap::fromFile(const GLchar* file, Core::Sprite sprite) {
+  std::vector<Core::Tile> tileList;
   std::string line;
   std::ifstream fstream(file);
   std::string tileCode;
@@ -63,14 +63,14 @@ Core::TileMap Core::TileMap::fromFile(const GLchar* file, Core::Sprite sprite) {
           tileCode.erase(tileCode.begin());
           isCollidable = 1;
         }
-        Core::vec2 pos = Core::TileMap::getPosFromTileset(std::stoi(tileCode));
+        Core::vec2 pos = getPosFromTileset(std::stoi(tileCode));
         Core::Tile tile(pos.x, pos.y, isCollidable, sprite);
-        tiles.push_back(tile);
+        tileList.push_back(tile);
       }
     }
   }
 
-  return Core::TileMap("src/assets/hex-map.png", tiles);
+  this->tiles = tileList;
 }
 
 Core::vec2 Core::TileMap::getPosFromTileset(int index) {

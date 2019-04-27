@@ -8,7 +8,7 @@
 namespace Core {
   class Sprite : public Core::Texture {
   public:
-    SDL_Rect* clip;
+    SDL_Rect clip;
     int width;
     int height;
 
