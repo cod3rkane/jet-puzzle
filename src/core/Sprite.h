@@ -12,6 +12,7 @@ namespace Core {
     int width;
     int height;
 
+    Sprite();
     Sprite(std::string path, SDL_Renderer* renderer, int width, int height);
     void render(SDL_Renderer* renderer) override;
   };

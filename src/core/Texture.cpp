@@ -1,5 +1,7 @@
 #include "Texture.h"
 
+Core::Texture::Texture() {}
+
 Core::Texture::Texture(std::string path, SDL_Renderer* renderer) {
   int width;
   int height;

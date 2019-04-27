@@ -23,7 +23,7 @@ namespace Core {
     bool isMoving = false;
     Core::Movement last_keyboard_state;
   public:
-    Core::Sprite* sprite;
+    Core::Sprite sprite;
     const Core::Window* window_settigs;
 
     Player();

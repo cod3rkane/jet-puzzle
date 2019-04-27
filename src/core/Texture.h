@@ -10,6 +10,7 @@ namespace Core {
   class Texture : public Core::Object {
   public:
     SDL_Texture* texture;
+    Texture();
     Texture(std::string path, SDL_Renderer* renderer);
     void render(SDL_Renderer* renderer);
     void updateState(double dt, const Uint8* keyboard_state);

@@ -8,7 +8,7 @@ Core::Player::~Player() {
 }
 
 void Core::Player::render(SDL_Renderer* renderer) {
-    this->sprite->render(renderer);
+    this->sprite.render(renderer);
 }
 
 void Core::Player::move(double dt, Core::Movement direction) {
@@ -38,10 +38,10 @@ void Core::Player::move(double dt, Core::Movement direction) {
     rotation = 0;
   }
 
-  if (pos.x + this->sprite->width >= this->window_settigs->width) {
+  if (pos.x + this->sprite.width >= this->window_settigs->width) {
     // do nothing
     this->isMoving = false;
-  } else if (pos.y + this->sprite->height >= this->window_settigs->height) {
+  } else if (pos.y + this->sprite.height >= this->window_settigs->height) {
     // do nothing
     this->isMoving = false;
   } else if (pos.x <= 0.0f) {
@@ -76,12 +76,12 @@ void Core::Player::updateState(double dt, const Uint8* keyboard_state) {
 
 void Core::Player::setPosition(glm::ivec2 position) {
   this->position = position;
-  this->sprite->setPosition(position);
+  this->sprite.setPosition(position);
 }
 
 void Core::Player::setRotation(double rotation) {
   this->rotation = rotation;
-  this->sprite->setRotation(rotation);
+  this->sprite.setRotation(rotation);
 }
 
 void Core::Player::setScale(glm::vec3 scale) {
@@ -92,8 +92,8 @@ void Core::Player::checkCollisions(std::vector<Core::Tile> &tiles) {
   for (auto e : tiles) {
     if (e.getType() == 1) {
       bool collides = true;
-      double max_x = this->position.x + this->sprite->width;
-      double max_y = this->position.y + this->sprite->height;
+      double max_x = this->position.x + this->sprite.width;
+      double max_y = this->position.y + this->sprite.height;
       if (max_x < e.position.x || this->position.x > e.position.x + e.getBox().w) collides = false;
       if (max_y < e.position.y || this->position.y > e.position.y + e.getBox().h) collides = false;
       if (max_x > e.position.x || max_x < e.position.x + e.getBox().w) {

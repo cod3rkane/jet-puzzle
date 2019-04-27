@@ -1,5 +1,7 @@
 #include "Sprite.h"
 
+Core::Sprite::Sprite() {};
+
 Core::Sprite::Sprite(std::string path, SDL_Renderer* renderer, int width, int height): Core::Texture(path, renderer) {
   this->width = width;
   this->height = height;
