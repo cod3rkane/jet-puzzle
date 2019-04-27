@@ -49,7 +49,6 @@ void Core::TileMap::setGrid(int x, int y) {
 }
 
 void Core::TileMap::fromFile(const GLchar* file, Core::Sprite sprite) {
-  std::vector<Core::Tile> tileList;
   std::string line;
   std::ifstream fstream(file);
   std::string tileCode;
@@ -65,12 +64,11 @@ void Core::TileMap::fromFile(const GLchar* file, Core::Sprite sprite) {
         }
         Core::vec2 pos = getPosFromTileset(std::stoi(tileCode));
         Core::Tile tile(pos.x, pos.y, isCollidable, sprite);
-        tileList.push_back(tile);
+        tiles.push_back(tile);
       }
     }
   }
 
-  this->tiles = tileList;
 }
 
 Core::vec2 Core::TileMap::getPosFromTileset(int index) {
