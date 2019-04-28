@@ -57,12 +57,13 @@ void Game::main_loop() {
   delta.start();
 
   // TileMap
-  Core::Sprite hexmap("src/assets/hex-map.png", this->renderer, 77, 64);
+  Core::Sprite tilesetPixel("src/assets/tileset-64.png", this->renderer, 64, 64);
   Core::TileMap level01;
   level01.setGrid(5, 6);
-  level01.fromFile("src/levels/01.lvl", hexmap);
+  level01.fromFile("src/levels/01.lvl", tilesetPixel);
+  Core::Sprite hexmap("src/assets/hex-map.png", this->renderer, 77, 64);
 
-std::vector<Core::Tile> tiles = {
+  std::vector<Core::Tile> tiles = {
                                    Core::Tile(0, 0, 0, hexmap),
                                    Core::Tile(0, 0, 0, hexmap),
                                    Core::Tile(79, 143, 1, hexmap),
@@ -125,7 +126,7 @@ std::vector<Core::Tile> tiles = {
     delta.start();
 
     SDL_RenderClear(this->renderer);
-    glClearColor(0.94f, 0.97f, 0.93f, 1.0f);
+    glClearColor(0.0, 0.0f, 0.0f, 1.0f);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
     // render

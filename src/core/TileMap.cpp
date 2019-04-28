@@ -72,10 +72,10 @@ void Core::TileMap::fromFile(const GLchar* file, Core::Sprite sprite) {
 }
 
 Core::vec2 Core::TileMap::getPosFromTileset(int index) {
-  int tile_w = 77;
+  int tile_w = 64;
   int tile_h = 64;
-  int max_tileset_rows = 5;
-  int max_tileset_cols = 6;
+  int max_tileset_rows = 8;
+  int max_tileset_cols = 8;
   int i = 0;
   Core::vec2 vec2;
 
@@ -84,7 +84,7 @@ Core::vec2 Core::TileMap::getPosFromTileset(int index) {
       if (i == index) {
         int a = x * tile_w;
         int b = y * tile_h;
-        vec2 = { a, b };
+        vec2 = { b, a };
       }
       i++;
     }
